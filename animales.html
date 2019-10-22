@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="animal1"></p>
+    <button onclick="animal1.comer()">Comer</button>
+    <button onclick="animal1.dormir()">Dormir</button>
+    <button onclick="animal1.jugar()">Jugar</button>
+    <button onclick="animal1.limpiar()">Limpiar</button>
+
+    <p id="animal2"></p>
+    <button onclick="animal2.comer()">Comer</button>
+    <button onclick="animal2.dormir()">Dormir</button>
+    <button onclick="animal2.jugar()">Jugar</button>
+    <button onclick="animal2.limpiar()">Limpiar</button>
+
+    <p id="animal3"></p>
+    <button onclick="animal3.comer()">Comer</button>
+    <button onclick="animal3.dormir()">Dormir</button>
+    <button onclick="animal3.jugar()">Jugar</button>
+    <button onclick="animal3.limpiar()">Limpiar</button>
+
+
+    <script>
+
+
+        class Zoo{
+            constructor(){
+                this.animales = [];
+            }
+            aynadirAnimal (animal) {
+                this.animales.push(animal);
+
+            }
+        }
+        class Animales {
+            constructor(animal, id) {
+                this.animal = animal;
+                this.hambre = 0;
+                this.sueyno = 0;
+                this.aburrimiento = 0;
+                this.suciedad = 0;
+                this.id = id;
+
+            }
+
+            comer() { //no se puede llamar como una de las propiedades dentro del metodo, en este caso hambre.
+                this.hambre = 0;
+                this.sueyno += 3;
+                this.aburrimiento += 3;
+                this.suciedad += 3;
+                this.mostrarEstado();
+            }
+            dormir() {
+                this.sueyno = 0;
+                this.hambre += 3;
+                this.aburrimiento += 3;
+                this.suciedad += 3;
+                this.mostrarEstado();
+            }
+            jugar() {
+                this.hambre += 3;
+                this.sueyno += 3;
+                this.aburrimiento = 0;
+                this.suciedad += 3;
+                this.mostrarEstado();
+
+            }
+            limpiar() {
+                this.hambre += 3;
+                this.sueyno += 3;
+                this.aburrimiento += 3;
+                this.suciedad = 0;
+                this.mostrarEstado();
+
+
+            }
+
+            mostrarEstado() {
+                let estado = document.getElementById('animal' + this.id);
+                estado.innerHTML = `El estado de la ${this.animal} es: Hambre: ${this.hambre}, Suciedad: ${this.suciedad}, Aburrimiento: ${this.aburrimiento}, Sueño: ${this.sueyno}`;
+
+            }
+
+
+
+        }
+
+        let animal1 = new Animales('girafa', 1);
+        let animal2 = new Animales('tortuga', 2);
+        let animal3 = new Animales('ardilla', 3);
+
+        let zoo = new Zoo();
+        zoo.aynadirAnimal(animal1);
+        zoo.aynadirAnimal(new Animales('elefante',4));
+
+
+    </script>
+
+
+</body>
+
+</html>

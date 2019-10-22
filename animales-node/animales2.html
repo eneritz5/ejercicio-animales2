@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="zoo"></div>
+    
+
+<script src = "animales2.js"></script>
+
+    <script>
+
+
+        let zoo = new Zoo();
+        zoo.aynadirAnimal(new Animales('girafa', 1));
+        zoo.aynadirAnimal(new Animales('tortuga', 2));
+        zoo.aynadirAnimal(new Animales('ardilla',3));
+        zoo.aynadirAnimal(new Animales('elefante',4));
+
+        let botones = document.getElementById('zoo');
+        for(let i=0;i<zoo.animales.length;i++){
+            botones.innerHTML += `<p id="animal${i+1}"></p>
+            <button onclick="zoo.animales[${i}].comer()">Comer</button>
+            <button onclick="zoo.animales[${i}].dormir()">Dormir</button>
+            <button onclick="zoo.animales[${i}].jugar()">Jugar</button>
+            <button onclick="zoo.animales[${i}].limpiar()">Limpiar</button>`;
+        }
+            </script>
+
+
+</body>
+
+</html>
